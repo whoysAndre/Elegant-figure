@@ -1,0 +1,132 @@
+'use client'
+
+import { IoCloseOutline, IoLogInOutline, IoLogOutOutline, IoPeopleOutline, IoPersonOutline, IoSearchOutline, IoShirtOutline, IoTicketOutline } from "react-icons/io5"
+import Link from "next/link"
+import { titleFont } from "@/config/fonts"
+import { useUIStore } from "@/store"
+import clsx from "clsx"
+
+
+export const Sidebar = () => {
+
+  const isSideMenuOpen = useUIStore(state => state.isSideMenuOpen);
+  const closeMenu = useUIStore(state => state.closeSideMenu);
+
+  return (
+    <div className="">
+
+      {/* Background black */}
+
+      {
+        isSideMenuOpen && (
+          <div
+            className="fixed top-0 left-0 w-screen h-screen z-10 bg-black opacity-30"
+          />
+        )
+      }
+
+
+      {/* Blur */}
+
+      {
+        isSideMenuOpen && (
+          <div
+            onClick={closeMenu}
+            className="fade-in fixed top-0 left-0 w-screen h-screen z-10 backdrop-filter backdrop-blur-sm"
+          />
+        )
+      }
+
+      {/* SideMenu */}
+      <nav
+        className={
+          clsx(
+            "fixed bg-white w-[250px]  md:w-[500px] h-screen z-20 top-0 right-0 shadow-2xl transform transition-all duration-300 p-5",
+            {
+              "translate-x-full": !isSideMenuOpen 
+            }
+          )
+        }
+      >
+        <IoCloseOutline
+          size={50}
+          className="absolute right-5 top-5 cursor-pointer"
+          onClick={() => closeMenu()}
+        />
+
+        {/* Input */}
+        <div className="relative mt-14">
+          <IoSearchOutline size={20} className="absolute top-2 left-2" />
+          <input
+            type="text"
+            placeholder="Buscar producto"
+            className="w-full bg-gray-50 rounded pl-10 py-1 pr-10 border-b-2 text-xl boder-gray-200 focus:outline-none focus:border-blue-500"
+          />
+        </div>
+
+
+        {/* Menu */}
+        <Link
+          href="/"
+          className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all gap-2"
+        >
+          <IoPersonOutline size={30} />
+          <span className={`${titleFont.className} text-xl`}>Perfil</span>
+        </Link>
+
+        <Link
+          href="/"
+          className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all gap-2"
+        >
+          <IoTicketOutline size={30} />
+          <span className={`${titleFont.className} text-xl`}>Ordenes</span>
+        </Link>
+
+        <Link
+          href="/"
+          className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all gap-2"
+        >
+          <IoLogInOutline size={30} />
+          <span className={`${titleFont.className} text-xl`}>Ingresar</span>
+        </Link>
+
+        <Link
+          href="/"
+          className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all gap-2 pl-4"
+        >
+          <IoLogOutOutline size={30} />
+          <span className={`${titleFont.className} text-xl`}>Salir</span>
+        </Link>
+
+        {/* Line separator */}
+        <div className="w-full h-px bg-gray-200 my-10" />
+
+        {/* Menu */}
+        <Link
+          href="/"
+          className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all gap-2"
+        >
+          <IoShirtOutline size={30} />
+          <span className={`${titleFont.className} text-xl`}>Productos</span>
+        </Link>
+
+        <Link
+          href="/"
+          className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all gap-2"
+        >
+          <IoTicketOutline size={30} />
+          <span className={`${titleFont.className} text-xl`}>Ordenes</span>
+        </Link>
+
+        <Link
+          href="/"
+          className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all gap-2"
+        >
+          <IoPeopleOutline size={30} />
+          <span className={`${titleFont.className} text-xl`}>Usuarios</span>
+        </Link>
+
+      </nav>
+    </div>
+  )
+}
