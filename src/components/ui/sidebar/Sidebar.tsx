@@ -5,12 +5,19 @@ import Link from "next/link"
 import { titleFont } from "@/config/fonts"
 import { useUIStore } from "@/store"
 import clsx from "clsx"
+import { logout } from "@/actions"
+import { useSession } from "next-auth/react"
 
 
 export const Sidebar = () => {
 
   const isSideMenuOpen = useUIStore(state => state.isSideMenuOpen);
   const closeMenu = useUIStore(state => state.closeSideMenu);
+
+  const { data: session } = useSession();
+  const isAuthenticated = !!session?.user;
+  // @ts-ignore: Ignora el error sobre la propiedad 'role'
+  const isAdmin = (session?.user.role === 'admin');
 
   return (
     <div className="">
@@ -43,7 +50,7 @@ export const Sidebar = () => {
           clsx(
             "fixed bg-white w-[250px]  md:w-[500px] h-screen z-20 top-0 right-0 shadow-2xl transform transition-all duration-300 p-5",
             {
-              "translate-x-full": !isSideMenuOpen 
+              "translate-x-full": !isSideMenuOpen
             }
           )
         }
@@ -66,65 +73,95 @@ export const Sidebar = () => {
 
 
         {/* Menu */}
-        <Link
-          href="/"
-          className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all gap-2"
-        >
-          <IoPersonOutline size={30} />
-          <span className={`${titleFont.className} text-xl`}>Perfil</span>
-        </Link>
 
-        <Link
-          href="/"
-          className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all gap-2"
-        >
-          <IoTicketOutline size={30} />
-          <span className={`${titleFont.className} text-xl`}>Ordenes</span>
-        </Link>
+        {
+          isAuthenticated && (
+            <>
+              <Link
+                href="/profile"
+                onClick={() => closeMenu()}
+                className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all gap-2"
+              >
+                <IoPersonOutline size={30} />
+                <span className={`${titleFont.className} text-xl`}>Perfil</span>
+              </Link>
 
-        <Link
-          href="/"
-          className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all gap-2"
-        >
-          <IoLogInOutline size={30} />
-          <span className={`${titleFont.className} text-xl`}>Ingresar</span>
-        </Link>
+              <Link
+                href="/"
+                className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all gap-2"
+              >
+                <IoTicketOutline size={30} />
+                <span className={`${titleFont.className} text-xl`}>Ordenes</span>
+              </Link>
 
-        <Link
-          href="/"
-          className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all gap-2 pl-4"
-        >
-          <IoLogOutOutline size={30} />
-          <span className={`${titleFont.className} text-xl`}>Salir</span>
-        </Link>
+            </>
+          )
+        }
 
-        {/* Line separator */}
-        <div className="w-full h-px bg-gray-200 my-10" />
 
-        {/* Menu */}
-        <Link
-          href="/"
-          className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all gap-2"
-        >
-          <IoShirtOutline size={30} />
-          <span className={`${titleFont.className} text-xl`}>Productos</span>
-        </Link>
 
-        <Link
-          href="/"
-          className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all gap-2"
-        >
-          <IoTicketOutline size={30} />
-          <span className={`${titleFont.className} text-xl`}>Ordenes</span>
-        </Link>
+        {
+          isAuthenticated && (
+            <button
 
-        <Link
-          href="/"
-          className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all gap-2"
-        >
-          <IoPeopleOutline size={30} />
-          <span className={`${titleFont.className} text-xl`}>Usuarios</span>
-        </Link>
+              className="w-full flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all gap-2 pl-4"
+              onClick={() => logout()}
+            >
+              <IoLogOutOutline size={30} />
+              <span className={`${titleFont.className} text-xl`}>Salir</span>
+            </button>
+
+          )
+        }
+
+        {
+          !isAuthenticated && (
+
+            <Link
+              href="/auth/login"
+              className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all gap-2"
+              onClick={() => closeMenu()}
+            >
+              <IoLogInOutline size={30} />
+              <span className={`${titleFont.className} text-xl`}>Ingresar</span>
+            </Link>
+          )
+        }
+
+        {
+          isAdmin && (
+            <>
+              {/* Line separator */}
+              <div className="w-full h-px bg-gray-200 my-10" />
+
+              {/* Menu */}
+              <Link
+                href="/admin/products"
+                className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all gap-2"
+              >
+                <IoShirtOutline size={30} />
+                <span className={`${titleFont.className} text-xl`}>Productos</span>
+              </Link>
+
+              <Link
+                href="/"
+                className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all gap-2"
+              >
+                <IoTicketOutline size={30} />
+                <span className={`${titleFont.className} text-xl`}>Ordenes</span>
+              </Link>
+
+              <Link
+                href="/"
+                className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all gap-2"
+              >
+                <IoPeopleOutline size={30} />
+                <span className={`${titleFont.className} text-xl`}>Usuarios</span>
+              </Link>
+
+            </>
+          )
+        }
 
       </nav>
     </div>

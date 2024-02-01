@@ -18,3 +18,13 @@ export * from "./ui/filter/Filter";
 
 export * from "./ui/footer/Footer";
 
+
+export * from "./ui/pagination/Pagination";
+
+
+export * from "./product/stock-label/StockLabel";
+
+
+export * from "./provider/Provider";
+
+export * from "./product/product-image/ProductImage";

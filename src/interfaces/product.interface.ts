@@ -1,4 +1,5 @@
 export interface Product {
+  id: string;
   description: string;
   images: string[];
   inStock: number;
@@ -7,10 +8,10 @@ export interface Product {
   slug: string;
   tags: string[];
   title: string;
-  type: Type;
-  gender: Catgory,
-  brand: string
+  type: string;
+  gender: 'men'|'women'|'kid'|'unisex',
+  brands: string
 };
 
-export type Catgory = 'men'|'women'|'kid'|'unisex';
-export type Type = 'shirts'|'pants'|'hoodies'|'hats';
+
+

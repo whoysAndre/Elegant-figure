@@ -9,6 +9,10 @@ export const TopMenu = () => {
 
   const openSideMenu = useUIStore(state=>state.openSideMenu)
   const path = usePathname();
+  
+  const reload = ()=>{
+    window.location.replace('/');
+  };
 
   
   return (
@@ -16,7 +20,7 @@ export const TopMenu = () => {
 
       {/* Logo */}
       <div>
-        <Link href="/" className="text-[1.2rem]">
+        <Link href="/" className="text-[1.2rem]" onClick={()=>reload()} >
           <span className={`${titleFont.className} antialiased font-bold`}>Elegant</span>
           <span> | Shop</span>
         </Link>
@@ -26,22 +30,22 @@ export const TopMenu = () => {
 
       <div className="hidden sm:block">
         <Link
-          href="/category/men"
-          className={ `${path==='/category/men' ? 'bg-black text-white': ''} ${titleFont.className} m-2 p-2 rounded-md transition-all hover:bg-gray-100`} 
+          href="/gender/men"
+          className={ `${path==='/gender/men' ? 'bg-black text-white': ''} ${titleFont.className} m-2 p-2 rounded-md transition-all hover:bg-gray-100`} 
         >
           hombres
         </Link>
 
         <Link
-          href="/category/women"
-          className= { `${path==='/category/women' ? 'bg-black text-white': ''} ${titleFont.className} m-2 p-2 rounded-md transition-all hover:bg-gray-100`} 
+          href="/gender/women"
+          className= { `${path==='/gender/women' ? 'bg-black text-white': ''} ${titleFont.className} m-2 p-2 rounded-md transition-all hover:bg-gray-100`} 
         >
           mujeres
         </Link>
 
         <Link
-          href="/category/kid"
-          className={ `${path==='/category/kid' ? 'bg-black text-white': ''} ${titleFont.className} m-2 p-2 rounded-md transition-all hover:bg-gray-100`} 
+          href="/gender/kid"
+          className={ `${path==='/gender/kid' ? 'bg-black text-white': ''} ${titleFont.className} m-2 p-2 rounded-md transition-all hover:bg-gray-100`} 
         >
           niños
         </Link>
