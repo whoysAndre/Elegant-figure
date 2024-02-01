@@ -1,6 +1,6 @@
 'use client'
 
-import { IoCloseOutline, IoLogInOutline, IoLogOutOutline, IoPeopleOutline, IoPersonOutline, IoSearchOutline, IoShirtOutline, IoTicketOutline } from "react-icons/io5"
+import { IoArrowForwardOutline, IoCloseOutline, IoLogInOutline, IoLogOutOutline, IoManOutline, IoPeopleOutline, IoPersonOutline, IoSearchOutline, IoShirtOutline, IoTicketOutline, IoWomanOutline } from "react-icons/io5"
 import Link from "next/link"
 import { titleFont } from "@/config/fonts"
 import { useUIStore } from "@/store"
@@ -74,6 +74,8 @@ export const Sidebar = () => {
 
         {/* Menu */}
 
+
+
         {
           isAuthenticated && (
             <>
@@ -114,6 +116,10 @@ export const Sidebar = () => {
           )
         }
 
+
+
+
+
         {
           !isAuthenticated && (
 
@@ -125,6 +131,58 @@ export const Sidebar = () => {
               <IoLogInOutline size={30} />
               <span className={`${titleFont.className} text-xl`}>Ingresar</span>
             </Link>
+          )
+        }
+
+
+        {/* Line separator */}
+        <div className="w-full h-px bg-gray-200 my-10" />
+
+        {/* Menu */}
+        <div className="flex flex-col gap-5 pl-4">
+          <Link href="/gender/men" className="flex items-center gap-2 hover:bg-gray-100 rounded transition-all py-2">
+            <IoArrowForwardOutline size={30} />
+            <span className={`${titleFont.className} text-xl`}>Hombres</span>
+          </Link>
+
+          <Link href="/gender/women" className="flex items-center hover:bg-gray-100 rounded transition-all gap-2 py-2">
+            <IoArrowForwardOutline size={30} />
+            <span className={`${titleFont.className} text-xl`}>Mujeres</span>
+          </Link>
+
+          <Link href="/gender/kid" className="flex items-center gap-2 hover:bg-gray-100 rounded transition-all py-2">
+            <IoArrowForwardOutline size={30} />
+            <span className={`${titleFont.className} text-xl`}>Niños</span>
+          </Link>
+        </div>
+
+
+
+        {
+          isAdmin && (
+            <>
+              {/* Line separator */}
+              <div className="w-full h-px bg-gray-200 my-10" />
+
+              {/* Menu */}
+              <div className="flex flex-col gap-5 pl-4">
+                <Link href="/gender/men" className="flex items-center gap-2 hover:bg-gray-100 rounded transition-all py-2">
+                  <IoArrowForwardOutline size={30} />
+                  <span className={`${titleFont.className} text-xl`}>Hombres</span>
+                </Link>
+
+                <Link href="/gender/women" className="flex items-center hover:bg-gray-100 rounded transition-all gap-2 py-2">
+                  <IoArrowForwardOutline size={30} />
+                  <span className={`${titleFont.className} text-xl`}>Mujeres</span>
+                </Link>
+
+                <Link href="/gender/kid" className="flex items-center gap-2 hover:bg-gray-100 rounded transition-all py-2">
+                  <IoArrowForwardOutline size={30} />
+                  <span className={`${titleFont.className} text-xl`}>Niños</span>
+                </Link>
+              </div>
+
+            </>
           )
         }
 
