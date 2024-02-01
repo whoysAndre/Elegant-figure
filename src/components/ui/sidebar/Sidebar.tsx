@@ -156,72 +156,44 @@ export const Sidebar = () => {
           </Link>
         </div>
 
+    
 
+      {
+        isAdmin && (
+          <>
+            {/* Line separator */}
+            <div className="w-full h-px bg-gray-200 my-10" />
 
-        {
-          isAdmin && (
-            <>
-              {/* Line separator */}
-              <div className="w-full h-px bg-gray-200 my-10" />
+            {/* Menu */}
+            <Link
+              href="/admin/products"
+              className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all gap-2"
+            >
+              <IoShirtOutline size={30} />
+              <span className={`${titleFont.className} text-xl`}>Productos</span>
+            </Link>
 
-              {/* Menu */}
-              <div className="flex flex-col gap-5 pl-4">
-                <Link href="/gender/men" className="flex items-center gap-2 hover:bg-gray-100 rounded transition-all py-2">
-                  <IoArrowForwardOutline size={30} />
-                  <span className={`${titleFont.className} text-xl`}>Hombres</span>
-                </Link>
+            <Link
+              href="/"
+              className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all gap-2"
+            >
+              <IoTicketOutline size={30} />
+              <span className={`${titleFont.className} text-xl`}>Ordenes</span>
+            </Link>
 
-                <Link href="/gender/women" className="flex items-center hover:bg-gray-100 rounded transition-all gap-2 py-2">
-                  <IoArrowForwardOutline size={30} />
-                  <span className={`${titleFont.className} text-xl`}>Mujeres</span>
-                </Link>
+            <Link
+              href="/"
+              className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all gap-2"
+            >
+              <IoPeopleOutline size={30} />
+              <span className={`${titleFont.className} text-xl`}>Usuarios</span>
+            </Link>
 
-                <Link href="/gender/kid" className="flex items-center gap-2 hover:bg-gray-100 rounded transition-all py-2">
-                  <IoArrowForwardOutline size={30} />
-                  <span className={`${titleFont.className} text-xl`}>Niños</span>
-                </Link>
-              </div>
+          </>
+        )
+      }
 
-            </>
-          )
-        }
-
-        {
-          isAdmin && (
-            <>
-              {/* Line separator */}
-              <div className="w-full h-px bg-gray-200 my-10" />
-
-              {/* Menu */}
-              <Link
-                href="/admin/products"
-                className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all gap-2"
-              >
-                <IoShirtOutline size={30} />
-                <span className={`${titleFont.className} text-xl`}>Productos</span>
-              </Link>
-
-              <Link
-                href="/"
-                className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all gap-2"
-              >
-                <IoTicketOutline size={30} />
-                <span className={`${titleFont.className} text-xl`}>Ordenes</span>
-              </Link>
-
-              <Link
-                href="/"
-                className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all gap-2"
-              >
-                <IoPeopleOutline size={30} />
-                <span className={`${titleFont.className} text-xl`}>Usuarios</span>
-              </Link>
-
-            </>
-          )
-        }
-
-      </nav>
-    </div>
+    </nav>
+    </div >
   )
 }

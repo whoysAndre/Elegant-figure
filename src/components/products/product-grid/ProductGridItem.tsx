@@ -1,5 +1,6 @@
 'use client'
 
+import { ProductImage } from "@/components";
 import { Product } from "@/interfaces";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,14 +17,13 @@ export const ProductGridItem = ({ product }: Props) => {
   return (
     <div className="rounded-md  fade-in">
       <Link href={`/product/${product.slug}`} >
-        <Image
-          src={`/products/${displayImage}`}
+        <ProductImage
+          src={displayImage}
           alt={product.title}
           className="w-full object-cover rounded-md shadow-md"
           width={800}
           height={800}
-          onMouseEnter={() => setDisplayImage(product.images[1])}
-          onMouseLeave={() => setDisplayImage(product.images[0])}
+
         />
       </Link>
 
@@ -33,7 +33,7 @@ export const ProductGridItem = ({ product }: Props) => {
           {product.title}
         </Link>
 
-        <span className="font-bold">${product.price}</span>
+        <span className="font-bold">s/.{product.price}</span>
       </div>
 
     </div>

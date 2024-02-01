@@ -94,7 +94,7 @@ export default async function ProductBySlugPage({ params }: Props) {
         <button
           className={`btn-primary my-5 ${titleFont.className}`}
         >
-          Agregar al carrito
+          muy pronto opcion a compra
         </button>
 
 
