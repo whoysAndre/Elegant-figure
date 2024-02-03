@@ -1,6 +1,7 @@
 'use client'
 
-import { IoArrowForwardOutline, IoCloseOutline, IoLogInOutline, IoLogOutOutline, IoManOutline, IoPeopleOutline, IoPersonOutline, IoSearchOutline, IoShirtOutline, IoTicketOutline, IoWomanOutline } from "react-icons/io5"
+import { IoArrowForwardOutline, IoCloseOutline, IoKeyOutline, IoLogInOutline, IoLogOutOutline, IoMaleFemaleOutline, IoMaleOutline, IoManOutline, IoPeopleOutline, IoPersonOutline, IoSearchOutline, IoShirtOutline, IoTicketOutline, IoWomanOutline } from "react-icons/io5"
+import { FaChildren } from "react-icons/fa6";
 import Link from "next/link"
 import { titleFont } from "@/config/fonts"
 import { useUIStore } from "@/store"
@@ -106,7 +107,7 @@ export const Sidebar = () => {
           isAuthenticated && (
             <button
 
-              className="w-full flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all gap-2 pl-4"
+              className="w-full flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all gap-2 pl-3"
               onClick={() => logout()}
             >
               <IoLogOutOutline size={30} />
@@ -116,45 +117,46 @@ export const Sidebar = () => {
           )
         }
 
+        {/* Menu */}
+        <div className="flex flex-col gap-5 pl-4 mt-10">
+          <Link href="/gender/men" className="flex items-center gap-2 hover:bg-gray-100 rounded transition-all py-2">
+            <IoMaleOutline size={30} />
+            <span className={`${titleFont.className} text-xl`}>Hombres</span>
+          </Link>
 
+          <Link href="/gender/women" className="flex items-center hover:bg-gray-100 rounded transition-all gap-2 py-2">
+            <IoMaleFemaleOutline size={30} />
+            <span className={`${titleFont.className} text-xl`}>Mujeres</span>
+          </Link>
+
+          <Link href="/gender/kid" className="flex items-center gap-2 hover:bg-gray-100 rounded transition-all py-2">
+            <FaChildren size={30} />
+            <span className={`${titleFont.className} text-xl`}>Niños</span>
+          </Link>
+        </div>
 
 
 
         {
           !isAuthenticated && (
-
-            <Link
-              href="/auth/login"
-              className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all gap-2"
-              onClick={() => closeMenu()}
-            >
-              <IoLogInOutline size={30} />
-              <span className={`${titleFont.className} text-xl`}>Ingresar</span>
-            </Link>
+            <>
+              <div className="w-full h-px bg-gray-200 my-10" />
+              <Link
+                href="/auth/login"
+                className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all gap-2 pl-3"
+                onClick={() => closeMenu()}
+              >
+                <IoKeyOutline size={30} />
+                <span className={`${titleFont.className} text-xl`}>Ingresar</span>
+              </Link>
+            </>
           )
         }
 
 
-        {/* Line separator */}
-        <div className="w-full h-px bg-gray-200 my-10" />
+        
 
-        {/* Menu */}
-        <div className="flex flex-col gap-5 pl-4">
-          <Link href="/gender/men" className="flex items-center gap-2 hover:bg-gray-100 rounded transition-all py-2">
-            <IoArrowForwardOutline size={30} />
-            <span className={`${titleFont.className} text-xl`}>Hombres</span>
-          </Link>
-
-          <Link href="/gender/women" className="flex items-center hover:bg-gray-100 rounded transition-all gap-2 py-2">
-            <IoArrowForwardOutline size={30} />
-            <span className={`${titleFont.className} text-xl`}>Mujeres</span>
-          </Link>
-
-          <Link href="/gender/kid" className="flex items-center gap-2 hover:bg-gray-100 rounded transition-all py-2">
-            <IoArrowForwardOutline size={30} />
-            <span className={`${titleFont.className} text-xl`}>Niños</span>
-          </Link>
-        </div>
+        
 
     
 

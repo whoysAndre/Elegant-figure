@@ -1,4 +1,3 @@
-
 export const revalidate = 60;
 
 import { getPaginatedProductsWithImages } from "@/actions";
@@ -22,7 +21,9 @@ export default  async function GenderByPage({params,searchParams}:Props) {
 
   const page = searchParams.page ? parseInt(searchParams.page) : 1;
 
+ 
   const { products,currentPage,totalPages } = await getPaginatedProductsWithImages({page,gender: gender as Gender});
+  
     
 
   if(products.length===0){

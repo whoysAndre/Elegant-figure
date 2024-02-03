@@ -19,10 +19,8 @@ export const SizeSelector = ({selectedSize, avaibleSize}:Props) => {
             <button 
               className={
                 clsx(
-                  "mx-2 hover:underline text-lg",
-                  {
-                    "underline": size === selectedSize
-                  }
+                  "mx-2 hover:underline text-lg bg-gray-200 p-2 rounded font-bold hover:bg-gray-300",
+                  
                 )
               }
               key={size}

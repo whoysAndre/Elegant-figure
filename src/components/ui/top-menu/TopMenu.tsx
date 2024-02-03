@@ -39,6 +39,7 @@ export const TopMenu = () => {
         <Link
           href="/gender/women"
           className= { `${path==='/gender/women' ? 'bg-black text-white': ''} ${titleFont.className} m-2 p-2 rounded-md transition-all hover:bg-gray-100`} 
+          
         >
           mujeres
         </Link>
@@ -55,11 +56,6 @@ export const TopMenu = () => {
       {/* Search, cart, menu */}
 
       <div className="flex items-center">
-        
-        <Link href="/search" className="mx-2 ">
-          <IoSearchOutline className="size-6"/>
-        </Link>
-
         <button 
           className="m-2 p-2 rounded-md transition-all hover:bg-gray-100"
           onClick={openSideMenu}        

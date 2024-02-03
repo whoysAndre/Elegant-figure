@@ -74,10 +74,10 @@ export default async function ProductBySlugPage({ params }: Props) {
       <div className="col-span-2 px-5 ">
 
         <StockLabel slug={product.slug} />
-        <h1 className={`${titleFont.className} antialiased font-bold text-xl`}>
+        <h1 className={`${titleFont.className} antialiased font-bold text-2xl`}>
           {product.title}
         </h1>
-        <p className="text-lg mb-5"> s/.{product.price}</p>
+        <p className="text-lg mt-2"> s/.{product.price}</p>
 
         {/* Sizes Selector */}
         <SizeSelector
@@ -99,8 +99,8 @@ export default async function ProductBySlugPage({ params }: Props) {
 
 
         {/* Description */}
-        <h3 className="font-bold text-[1.1rem]">Descripción</h3>
-        <p className="font-light">{product.description}</p>
+        {/* <h3 className="font-bold text-[1.1rem]">Descripción</h3>
+        <p className="font-light">{product.description}</p> */}
       </div>
 
 
