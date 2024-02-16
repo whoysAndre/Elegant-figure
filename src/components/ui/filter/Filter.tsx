@@ -46,6 +46,7 @@ export const Filter:React.FC = () => {
           <option value="sneakers">Zapatillas</option>
           <option value="pants">Pantalones</option>
           <option value="sets">Conjuntos</option>
+          <option value="sandals">Sandalias</option>
           <option value="caps">Gorros</option>
           
         </select>

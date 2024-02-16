@@ -167,6 +167,7 @@ export const ProductForm = ({ product, categories }: Props) => {
             <option value="caps">gorra</option>
             <option value="sets">conjunto</option>
             <option value="sneakers">zapatilla</option>
+            <option value="sandals">Sandalia</option>
           </select>
         </div>
 
