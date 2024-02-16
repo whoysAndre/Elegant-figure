@@ -35,6 +35,7 @@ export const Filter:React.FC = () => {
           <option value="nike">Nike</option>
           <option value="adidas">Adidas</option>
           <option value="puma">Puma</option>
+          <option value="reebok">Rebook</option>
         </select>
 
         <select className= {`${titleFont.className} rounded-md px-2 py-1  bg-gray-50 outline-none border-2`}
